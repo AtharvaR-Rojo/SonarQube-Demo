@@ -1,4 +1,3 @@
-> # Save this as .github/workflows/sync-cpi-artifacts.yml
 name: Sync SAP CPI artifacts for SonarQube
 
 on:
