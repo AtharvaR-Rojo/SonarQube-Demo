@@ -3,6 +3,13 @@ name: Sync SAP CPI artifacts for SonarQube
 on:
   workflow_dispatch:
     inputs:
+      environment:
+        description: "CPI tenant"
+        required: true
+        type: choice
+        options:
+          - DEV
+          - QA
       package:
         description: "Integration package - technical ID or display name"
         required: true
@@ -16,14 +23,18 @@ permissions:
   contents: write
 
 env:
-  # --- repository variables (Settings > Secrets and variables > Actions > Variables) ---
+  # --- environment variables, set per environment under Settings > Environments ---
   CPI_API_BASE: ${{ vars.CPI_API_BASE }}      # e.g. https://<tenant>.it-cpi0XX.cfapps.<region>.hana.ondemand.com/api/v1
   CPI_TOKEN_URL: ${{ vars.CPI_TOKEN_URL }}    # e.g. https://<subdomain>.authentication.<region>.hana.ondemand.com/oauth/token
-  TARGET_DIR: cpi                             # where filtered artifacts land in the repo
+  TARGET_DIR: cpi/${{ inputs.environment }}   # DEV and QA are kept side by side, never merged
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+
+    # Pulls the secrets and variables defined for this environment under
+    # Settings > Environments. Secret names stay the same; values differ.
+    environment: ${{ inputs.environment }}
 
     steps:
       - name: Check out repository
@@ -186,6 +197,7 @@ jobs:
         env:
           PKG_ID: ${{ steps.resolve.outputs.package_id }}
           IN_ARTIFACT: ${{ inputs.artifact }}
+          ENVIRONMENT: ${{ inputs.environment }}
         run: |
           set -euo pipefail
 
@@ -199,5 +211,5 @@ jobs:
           fi
 
           SCOPE_MSG="${IN_ARTIFACT:-all artifacts}"
-          git commit -m "chore(cpi): sync $SCOPE_MSG from package $PKG_ID"
+          git commit -m "chore(cpi): sync $SCOPE_MSG from $ENVIRONMENT package $PKG_ID"
           git push
