@@ -1,0 +1,5 @@
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:p6="http://services.europoolsystem.com/TrackOnline" xmlns="http://services.europoolsystem.com/PalletizerSSCCCreation" targetNamespace="http://services.europoolsystem.com/PalletizerSSCCCreation">
+   <xsd:import namespace="http://services.europoolsystem.com/TrackOnline" />
+   <xsd:element name="TrackOnlineTransactionGlobalRequest" type="p6:TrackOnlineTransactionGlobal" />
+</xsd:schema>

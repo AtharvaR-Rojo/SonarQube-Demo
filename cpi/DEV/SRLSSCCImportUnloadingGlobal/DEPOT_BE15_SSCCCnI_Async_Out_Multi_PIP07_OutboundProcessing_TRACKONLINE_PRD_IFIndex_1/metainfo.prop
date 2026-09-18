@@ -1,0 +1,5 @@
+#Store metainfo properties
+#Fri Sep 18 08:24:03 UTC 2026
+SAP-MigrationApproach=PIPELINE
+SAP-PIPOMigrated=true
+description=System\: EPS-POP, System version\: 7.50, Pattern\: Content-Based Routing Asynchronous, Migration Approach\: Pipeline, Type\: Integrated Configuration, PO Artifact Name\: DEPOTS|DEPOT_BE15|SSCCCnI_Async_Out|http\://services.europoolsystem.com/SSCCCnI||

@@ -1,0 +1,397 @@
+
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:p2="http://services.europoolsystem.com/PalletizerSSCCCreation" xmlns:p1="http://services.europoolsystem.com/TrackOnline" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="TrackOnlineTransactionGlobal_Async_In" targetNamespace="http://services.europoolsystem.com/TrackOnline">
+   <wsdl:documentation>
+   inbound interface for palletizer SSCC creation
+   </wsdl:documentation>
+   <wsp:UsingPolicy wsdl:required="true" />
+   <wsp:Policy wsu:Id="OP_TrackOnlineGlobal_Async_In" />
+   <wsdl:types>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:p6="http://services.europoolsystem.com/TrackOnline" xmlns="http://services.europoolsystem.com/PalletizerSSCCCreation" targetNamespace="http://services.europoolsystem.com/PalletizerSSCCCreation">
+         <xsd:import namespace="http://services.europoolsystem.com/TrackOnline" />
+         <xsd:element name="TrackOnlineTransactionGlobalRequest" type="p6:TrackOnlineTransactionGlobal" />
+      </xsd:schema>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://services.europoolsystem.com/TrackOnline" targetNamespace="http://services.europoolsystem.com/TrackOnline">
+         <xsd:complexType name="TrackOnlineTransaction">
+            <xsd:sequence>
+               <xsd:element name="id" type="xsd:string" minOccurs="0" />
+               <xsd:element name="statusCode" type="xsd:string" minOccurs="0" />
+               <xsd:element name="status" type="xsd:string" minOccurs="0" />
+               <xsd:element name="typeCode" type="xsd:string" minOccurs="0" />
+               <xsd:element name="type" type="xsd:string" minOccurs="0" />
+               <xsd:element name="transactionNumber" type="xsd:string" minOccurs="0" />
+               <xsd:element name="documentNumber" type="xsd:string" minOccurs="0" />
+               <xsd:element name="referenceNumber" type="xsd:string" minOccurs="0" />
+               <xsd:element name="fromLocation" type="TrackOnlineLocation" minOccurs="0" />
+               <xsd:element name="toLocation" type="TrackOnlineLocation" minOccurs="0" />
+               <xsd:element name="dateTransaction" type="xsd:string" minOccurs="0" />
+               <xsd:element name="dateTransactionCounterpart" type="xsd:string" minOccurs="0" />
+               <xsd:element name="contractor" type="TrackOnlineLocation" minOccurs="0" />
+               <xsd:element name="carrier" type="TrackOnlineLocation" minOccurs="0" />
+               <xsd:element name="licensePlate" type="xsd:string" minOccurs="0" />
+               <xsd:element name="trailerNumber" type="xsd:string" minOccurs="0" />
+               <xsd:element name="transactionTripNumber" type="xsd:string" minOccurs="0" />
+               <xsd:element name="transactionTripExecutionOrder" type="xsd:string" minOccurs="0" />
+               <xsd:element name="dockNumber" type="xsd:string" minOccurs="0" />
+               <xsd:element name="area" type="xsd:string" minOccurs="0" />
+               <xsd:element name="notes" type="xsd:string" minOccurs="0" />
+               <xsd:element name="internalNotes" type="xsd:string" minOccurs="0" />
+               <xsd:element name="transactionItems" minOccurs="0">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="itemDefinition" minOccurs="0">
+                           <xsd:complexType>
+                              <xsd:sequence>
+                                 <xsd:element name="id" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="number" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="name" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="code" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="type" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="gS1Code" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="basePrice" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="length" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="width" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="height" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="weight" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="volume" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="numberOfTruckSpaces" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="maxStackHeight" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="maxTruckLoad" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="standardOrderQuantity" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="isEnabled" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="createdOn" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="modifiedOn" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="externalNumbers" minOccurs="0">
+                                    <xsd:complexType>
+                                       <xsd:sequence>
+                                          <xsd:element name="source" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="number" type="xsd:string" minOccurs="0" />
+                                       </xsd:sequence>
+                                    </xsd:complexType>
+                                 </xsd:element>
+                              </xsd:sequence>
+                           </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="isInformational" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="quantity" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="quantityPlanned" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="itemConditionType" type="xsd:string" minOccurs="0" />
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="transactionDocuments" minOccurs="0">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="id" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="mimeType" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="fileName" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="createdOn" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="modifiedOn" type="xsd:string" minOccurs="0" />
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="editor" minOccurs="0">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="editorEmailAddress" type="xsd:string" minOccurs="0" />
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="relatedTransaction" minOccurs="0">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="id" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="transactionNumber" type="xsd:string" minOccurs="0" />
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="createdOn" type="xsd:string" minOccurs="0" />
+               <xsd:element name="modifiedOn" type="xsd:string" minOccurs="0" />
+               <xsd:element name="processedOn" type="xsd:string" minOccurs="0" />
+               <xsd:element name="isDeleted" type="xsd:string" minOccurs="0" />
+               <xsd:element name="scannedItems" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="type" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="code" type="xsd:string" minOccurs="0" />
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="packagingLabels" type="PackagingLabels" minOccurs="0" maxOccurs="unbounded" />
+               <xsd:element name="allowPackagingLabelAdjustments" type="xsd:string" minOccurs="0" />
+            </xsd:sequence>
+         </xsd:complexType>
+         <xsd:complexType name="PackagingLabels">
+            <xsd:sequence>
+               <xsd:element name="id" type="xsd:string" minOccurs="0" />
+               <xsd:element name="createdOn" type="xsd:string" minOccurs="0" />
+               <xsd:element name="expirationOn" type="xsd:string" minOccurs="0" />
+               <xsd:element name="type" type="xsd:string" minOccurs="0" />
+               <xsd:element name="isEnabled" type="xsd:string" minOccurs="0" />
+               <xsd:element name="modifiedOn" type="xsd:string" minOccurs="0" />
+               <xsd:element name="number" type="xsd:string" minOccurs="0" />
+               <xsd:element name="packagingNonSerializedItems" minOccurs="0">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="createdOn" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="itemDefinition" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="id" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="number" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="name" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="code" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="type" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="gS1Code" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="basePrice" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="length" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="width" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="height" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="weight" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="volume" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="numberOfTruckSpaces" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="maxStackHeight" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="maxTruckLoad" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="standardOrderQuantity" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="isEnabled" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="modifiedOn" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="externalNumbers" minOccurs="0">
+                           <xsd:complexType>
+                              <xsd:sequence>
+                                 <xsd:element name="source" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="number" type="xsd:string" minOccurs="0" />
+                              </xsd:sequence>
+                           </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="quantity" type="xsd:string" minOccurs="0" />
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="packagingSerializedItems" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="createdOn" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="item" minOccurs="0">
+                           <xsd:complexType>
+                              <xsd:sequence>
+                                 <xsd:element name="id" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="number" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="barCode" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="epcCode" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="bleCode" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="itemDefinition" minOccurs="0">
+                                    <xsd:complexType>
+                                       <xsd:sequence>
+                                          <xsd:element name="id" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="number" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="name" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="code" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="type" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="gS1Code" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="basePrice" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="length" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="width" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="height" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="weight" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="volume" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="numberOfTruckSpaces" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="maxStackHeight" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="maxTruckLoad" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="standardOrderQuantity" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="isEnabled" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="createdOn" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="modifiedOn" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="externalNumbers" minOccurs="0">
+                                             <xsd:complexType>
+                                                <xsd:sequence>
+                                                   <xsd:element name="source" type="xsd:string" minOccurs="0" />
+                                                   <xsd:element name="number" type="xsd:string" minOccurs="0" />
+                                                </xsd:sequence>
+                                             </xsd:complexType>
+                                          </xsd:element>
+                                       </xsd:sequence>
+                                    </xsd:complexType>
+                                 </xsd:element>
+                                 <xsd:element name="deviceIds" minOccurs="0">
+                                    <xsd:complexType>
+                                       <xsd:sequence>
+                                          <xsd:element name="deviceId" type="xsd:string" minOccurs="0" />
+                                       </xsd:sequence>
+                                    </xsd:complexType>
+                                 </xsd:element>
+                                 <xsd:element name="lastKnownPosition" minOccurs="0">
+                                    <xsd:complexType>
+                                       <xsd:sequence>
+                                          <xsd:element name="latitude" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="longitude" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="radius" type="xsd:string" minOccurs="0" />
+                                       </xsd:sequence>
+                                    </xsd:complexType>
+                                 </xsd:element>
+                                 <xsd:element name="lastKnownLocation" minOccurs="0">
+                                    <xsd:complexType>
+                                       <xsd:sequence>
+                                          <xsd:element name="id" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="number" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="name" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="nameShort" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="type" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="hierarchyLevel" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="parentNumber" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="parentName" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="addressLine" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="postalCode" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="city" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="stateOrProvince" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="country" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="telephone" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="mobile" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="emailAddress" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="globalLocationNumber" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="chamberOfCommerceNumber" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="vatNumber" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="legalEntityIdentifier" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="gps" minOccurs="0">
+                                             <xsd:complexType>
+                                                <xsd:sequence>
+                                                   <xsd:element name="latitude" type="xsd:string" minOccurs="0" />
+                                                   <xsd:element name="longitude" type="xsd:string" minOccurs="0" />
+                                                   <xsd:element name="radius" type="xsd:string" minOccurs="0" />
+                                                </xsd:sequence>
+                                             </xsd:complexType>
+                                          </xsd:element>
+                                          <xsd:element name="languageId" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="geofence" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="balanceOperationMode" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="isEnabled" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="createdOn" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="modifiedOn" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="tags" minOccurs="0">
+                                             <xsd:complexType>
+                                                <xsd:sequence>
+                                                   <xsd:element name="tag" type="xsd:string" minOccurs="0" />
+                                                </xsd:sequence>
+                                             </xsd:complexType>
+                                          </xsd:element>
+                                          <xsd:element name="websiteUrl" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="loadInstructions" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="deliverInstructions" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="openingHours" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="nextAuditOn" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="hasPriority" type="xsd:string" minOccurs="0" />
+                                          <xsd:element name="externalNumbers" minOccurs="0">
+                                             <xsd:complexType>
+                                                <xsd:sequence>
+                                                   <xsd:element name="source" type="xsd:string" />
+                                                   <xsd:element name="number" type="xsd:string" />
+                                                </xsd:sequence>
+                                             </xsd:complexType>
+                                          </xsd:element>
+                                       </xsd:sequence>
+                                    </xsd:complexType>
+                                 </xsd:element>
+                                 <xsd:element name="lastKnownTransactionId" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="lastKnownTemperature" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="firstSeen" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="lastSeen" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="createdOn" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="notes" type="xsd:string" minOccurs="0" />
+                                 <xsd:element name="isDeleted" type="xsd:string" minOccurs="0" />
+                              </xsd:sequence>
+                           </xsd:complexType>
+                        </xsd:element>
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:complexType>
+         <xsd:complexType name="TrackOnlineLocation">
+            <xsd:sequence>
+               <xsd:element name="id" type="xsd:string" minOccurs="0" />
+               <xsd:element name="number" type="xsd:string" minOccurs="0" />
+               <xsd:element name="name" type="xsd:string" minOccurs="0" />
+               <xsd:element name="nameShort" type="xsd:string" minOccurs="0" />
+               <xsd:element name="type" type="xsd:string" minOccurs="0" />
+               <xsd:element name="hierarchyLevel" type="xsd:string" minOccurs="0" />
+               <xsd:element name="parentNumber" type="xsd:string" minOccurs="0" />
+               <xsd:element name="parentName" type="xsd:string" minOccurs="0" />
+               <xsd:element name="addressLine" type="xsd:string" minOccurs="0" />
+               <xsd:element name="postalCode" type="xsd:string" minOccurs="0" />
+               <xsd:element name="city" type="xsd:string" minOccurs="0" />
+               <xsd:element name="stateOrProvince" type="xsd:string" minOccurs="0" />
+               <xsd:element name="country" type="xsd:string" minOccurs="0" />
+               <xsd:element name="telephone" type="xsd:string" minOccurs="0" />
+               <xsd:element name="mobile" type="xsd:string" minOccurs="0" />
+               <xsd:element name="emailAddress" type="xsd:string" minOccurs="0" />
+               <xsd:element name="globalLocationNumber" type="xsd:string" minOccurs="0" />
+               <xsd:element name="chamberOfCommerceNumber" type="xsd:string" minOccurs="0" />
+               <xsd:element name="vatNumber" type="xsd:string" minOccurs="0" />
+               <xsd:element name="legalEntityIdentifier" type="xsd:string" minOccurs="0" />
+               <xsd:element name="gps" minOccurs="0">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="latitude" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="longitude" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="radius" type="xsd:string" minOccurs="0" />
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="languageId" type="xsd:string" minOccurs="0" />
+               <xsd:element name="geofence" type="xsd:string" minOccurs="0" />
+               <xsd:element name="balanceOperationMode" type="xsd:string" minOccurs="0" />
+               <xsd:element name="isEnabled" type="xsd:string" minOccurs="0" />
+               <xsd:element name="createdOn" type="xsd:string" minOccurs="0" />
+               <xsd:element name="modifiedOn" type="xsd:string" minOccurs="0" />
+               <xsd:element name="tags" minOccurs="0">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="tag" type="xsd:string" minOccurs="0" />
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+               <xsd:element name="websiteUrl" type="xsd:string" minOccurs="0" />
+               <xsd:element name="loadInstructions" type="xsd:string" minOccurs="0" />
+               <xsd:element name="deliverInstructions" type="xsd:string" minOccurs="0" />
+               <xsd:element name="openingHours" type="xsd:string" minOccurs="0" />
+               <xsd:element name="nextAuditOn" type="xsd:string" minOccurs="0" />
+               <xsd:element name="hasPriority" type="xsd:string" minOccurs="0" />
+               <xsd:element name="externalNumbers" minOccurs="0">
+                  <xsd:complexType>
+                     <xsd:sequence>
+                        <xsd:element name="source" type="xsd:string" minOccurs="0" />
+                        <xsd:element name="number" type="xsd:string" minOccurs="0" />
+                     </xsd:sequence>
+                  </xsd:complexType>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:complexType>
+         <xsd:complexType name="TrackOnlineTransactionGlobal">
+            <xsd:sequence>
+               <xsd:element name="Transaction" type="TrackOnlineTransaction" maxOccurs="unbounded" />
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="TrackOnlineTransactionGlobalRequest">
+      <wsdl:documentation />
+      <wsdl:part name="TrackOnlineTransactionGlobalRequest" element="p2:TrackOnlineTransactionGlobalRequest" />
+   </wsdl:message>
+   <wsdl:portType name="TrackOnlineTransactionGlobal_Async_In">
+      <wsdl:documentation>
+      inbound interface for palletizer SSCC creation
+      </wsdl:documentation>
+      <wsdl:operation name="TrackOnlineGlobal_Async_In">
+         <wsdl:documentation />
+         <wsp:Policy>
+            <wsp:PolicyReference URI="#OP_TrackOnlineGlobal_Async_In" />
+         </wsp:Policy>
+         <wsdl:input message="p1:TrackOnlineTransactionGlobalRequest" />
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="TrackOnlineTransactionGlobal_Async_InBinding" type="p1:TrackOnlineTransactionGlobal_Async_In">
+      <soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+      <wsdl:operation name="TrackOnlineGlobal_Async_In">
+         <soap:operation xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://sap.com/xi/WebService/soap1.1" />
+         <wsdl:input>
+            <soap:body xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" use="literal" />
+         </wsdl:input>
+      </wsdl:operation>
+   </wsdl:binding>
+</wsdl:definitions>
