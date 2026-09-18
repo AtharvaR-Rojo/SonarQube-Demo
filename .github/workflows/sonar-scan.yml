@@ -1,0 +1,58 @@
+name: SonarQube scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      path:
+        description: "Folder or file to scan (e.g. cpi, cpi/DEV, cpi/DEV/EPSPO2CIBatch3A/IF0000_OB_ADLS_CommonReceiver_GLO_SupplyChainOperation)"
+        required: true
+        type: string
+        default: cpi
+      project_key:
+        description: "SonarQube project key"
+        required: true
+        type: string
+        default: Bmx_Demo
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate path
+        env:
+          SCAN_PATH: ${{ inputs.path }}
+        run: |
+          set -euo pipefail
+
+          if [ ! -e "$SCAN_PATH" ]; then
+            echo "::error::'$SCAN_PATH' does not exist in the repository."
+            echo "Available folders under cpi/:"
+            find cpi -maxdepth 3 -type d 2>/dev/null | sed 's/^/  /' || echo "  (none)"
+            exit 1
+          fi
+
+          echo "Files the XML analyser should pick up:"
+          find "$SCAN_PATH" -type f \( \
+            -iname '*.iflw' -o -iname '*.xml' -o -iname '*.xsd' -o -iname '*.xsl' \
+            -o -iname '*.mmap' -o -iname '*.prop' -o -iname '*.propdef' \
+            -o -iname '*.wsdl' -o -iname '*.edmx' \
+          \) | sed 's/^/  /'
+
+      - name: Run SonarScanner
+        uses: sonarsource/sonarqube-scan-action@v2.0.2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=${{ inputs.project_key }}
+            -Dsonar.projectName=${{ inputs.project_key }}
+            -Dsonar.sources=${{ inputs.path }}
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.xml.file.suffixes=.xml,.xsd,.xsl,.iflw,.mmap,.prop,.propdef,.wsdl,.edmx
